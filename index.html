@@ -1144,7 +1144,7 @@ footer.main-footer {
       <div class="exp-body">
         <p class="sec-label">Experiencia cerámica</p>
         <h2 class="sec-title" id="exp-sushi">Set de <em>Sushi</em></h2>
-        <div class="exp-price" aria-label="Precio: 45 euros">45€</div>
+        <div class="exp-price" aria-label="Precio: 65 euros">65€</div>
         <p>
           Crea tu set de Sushi (plato, bol de soja y reposa palillos). Si te gusta el sushi y te apetece dar rienda suelta a tu creatividad, ven a Taller Inu a relajarte, dar forma a tu set y decorar con engobes con el diseño que quieras.
         </p>
@@ -1727,8 +1727,9 @@ footer.main-footer {
   // ── WHATSAPP LINKS ──────────────────────────
   // Centralise WhatsApp number so it's easy to update
   const WA_NUMBER = '34604923916';
-  const WA_MSG_TAZA    = encodeURIComponent('Hola! Me gustaría reservar una experiencia de Taza o Bol de Desayuno en Taller Inu.');
-  const WA_MSG_SUSHI   = encodeURIComponent('Hola! Me gustaría reservar una experiencia de Set de Sushi en Taller Inu.');
+  const WA_MSG_TAZA    = encodeURIComponent('Hola! Me gustaría reservar una experiencia de "Taza o Bol de Desayuno" en Taller Inu.');
+  const WA_MSG_LLAVES  = encodeURIComponent('Hola! Me gustaría reservar una experiencia de "Cuelga llaves" en Taller Inu.');
+  const WA_MSG_SUSHI   = encodeURIComponent('Hola! Me gustaría reservar una experiencia de "Set de Sushi" en Taller Inu.');
   const WA_MSG_REGALO  = encodeURIComponent('Hola! Me gustaría obtener una tarjeta de regalo para Taller Inu.');
   const WA_MSG_GENERAL = encodeURIComponent('Hola! Me gustaría obtener más información sobre Taller Inu.');
 
@@ -1736,6 +1737,7 @@ footer.main-footer {
     const type = el.dataset.wa;
     let msg = WA_MSG_GENERAL;
     if (type === 'taza')  msg = WA_MSG_TAZA;
+    if (type === 'llaves') msg = WA_MSG_LLAVES;
     if (type === 'sushi')  msg = WA_MSG_SUSHI;
     if (type === 'regalo') msg = WA_MSG_REGALO;
     el.href = 'https://wa.me/' + WA_NUMBER + '?text=' + msg;
