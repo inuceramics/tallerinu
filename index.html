@@ -102,6 +102,7 @@
 }
 
 html { scroll-behavior: smooth; }
+html, body { overflow-x: clip; }
 
 body {
   font-family: var(--font-m);
@@ -272,7 +273,7 @@ nav#main-nav {
   font-family: var(--font-m); font-size: 0.88rem; line-height: 1.85;
   color: var(--smoke); max-width: 40ch; margin-bottom: 3rem;
 }
-.hero-actions { display: flex; gap: 0; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0; }
 
 .hero-right {
   background: var(--blush);
@@ -730,6 +731,10 @@ footer.main-footer {
   .footer-grid { grid-template-columns: 1fr; }
   .footer-col { border-right: none; border-bottom: 1px solid rgba(254,250,245,0.06); }
   .footer-bottom { padding: 1rem 1.5rem; }
+
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .btn { justify-content: center; }
+  .hero-actions .btn + .btn { margin-top: -2px; }
 }
 
 
