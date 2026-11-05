@@ -869,6 +869,44 @@ footer.main-footer {
 }
 .recuerdos-jump button:hover { background: var(--night); color: var(--cream); }
 
+/* ── SLIDER DE FOTOS (Recuerdos) ── */
+.exp-img.slider { position: relative; min-height: 420px; }
+.slider .slide {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; transition: opacity 0.8s ease; pointer-events: none;
+}
+.slider .slide.is-active { opacity: 1; pointer-events: auto; }
+.slider-btn {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
+  width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+  background: var(--cream); color: var(--night); border: var(--border);
+  font-family: var(--font-m); font-size: 1rem; line-height: 1; cursor: pointer;
+  opacity: 0; transition: opacity 0.25s, background 0.2s, color 0.2s;
+}
+.slider:hover .slider-btn, .slider:focus-within .slider-btn { opacity: 1; }
+.slider-btn:hover { background: var(--night); color: var(--cream); }
+.slider-prev { left: 0.75rem; }
+.slider-next { right: 0.75rem; }
+.slider-bar {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  padding: 0.9rem 1rem;
+  background: linear-gradient(to top, rgba(25,21,16,0.45), rgba(25,21,16,0));
+}
+.slider-dot {
+  width: 10px; height: 10px; padding: 0; border-radius: 50%; cursor: pointer;
+  background: transparent; border: 2px solid var(--cream); transition: background 0.2s, transform 0.2s;
+}
+.slider-dot[aria-current="true"] { background: var(--cream); transform: scale(1.15); }
+.slider-pause {
+  margin-left: 0.5rem; background: none; border: none; color: var(--cream); cursor: pointer;
+  font-family: var(--font-m); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.4rem;
+}
+.slider.is-single .slider-btn, .slider.is-single .slider-bar { display: none; }
+@media (hover: none) { .slider-btn { opacity: 1; } }
+@media (max-width: 1024px) { .exp-img.slider { min-height: 0; aspect-ratio: 4 / 3; } }
+@media (prefers-reduced-motion: reduce) { .slider .slide { transition: none; } }
+
 @media (max-width: 900px) {
   .gift-inner { grid-template-columns: 1fr; gap: 3rem; padding: 3rem 2rem; }
 }
@@ -1387,8 +1425,10 @@ footer.main-footer {
 
     <!-- Belly bowl -->
     <article class="exp-card reveal" aria-labelledby="rec-bellybowl">
-      <div class="exp-img">
-        <img src="images/exp-bellybowl.jpg" alt="Belly bowl: cuenco de cerámica modelado a partir de una tripa de embarazo en Taller Inu" />
+      <div class="exp-img slider" data-interval="5500" role="group" aria-roledescription="carrusel" aria-label="Fotos: Belly bowl">
+        <img class="slide is-active" src="images/exp-bellybowl.jpg" alt="Belly bowl: cuenco de cerámica modelado a partir de una tripa de embarazo en Taller Inu (foto 1)" />
+        <img class="slide" src="images/exp-bellybowl-2.jpg" alt="Belly bowl: el proceso en Taller Inu (foto 2)" loading="lazy" />
+        <img class="slide" src="images/exp-bellybowl-3.jpg" alt="Belly bowl: el resultado final en Taller Inu (foto 3)" loading="lazy" />
       </div>
       <div class="exp-body">
         <p class="sec-label">Recuerdo de embarazo</p>
@@ -1427,8 +1467,10 @@ footer.main-footer {
 
     <!-- Huellas de bebé -->
     <article class="exp-card reveal" aria-labelledby="rec-bebe">
-      <div class="exp-img">
-        <img src="images/exp-huellas-bebe.jpg" alt="Huellas de manos y pies de bebé plasmadas en cerámica en Taller Inu" />
+      <div class="exp-img slider" data-interval="5500" role="group" aria-roledescription="carrusel" aria-label="Fotos: Huellas de bebé">
+        <img class="slide is-active" src="images/exp-huellas-bebe.jpg" alt="Huellas de bebé: huellas de manos y pies de bebé plasmadas en cerámica en Taller Inu (foto 1)" />
+        <img class="slide" src="images/exp-huellas-bebe-2.jpg" alt="Huellas de bebé: el proceso en Taller Inu (foto 2)" loading="lazy" />
+        <img class="slide" src="images/exp-huellas-bebe-3.jpg" alt="Huellas de bebé: el resultado final en Taller Inu (foto 3)" loading="lazy" />
       </div>
       <div class="exp-body">
         <p class="sec-label">Recuerdo de bebé</p>
@@ -1466,8 +1508,10 @@ footer.main-footer {
 
     <!-- Huellas de animales -->
     <article class="exp-card reveal" aria-labelledby="rec-animales">
-      <div class="exp-img">
-        <img src="images/exp-huellas-animales.jpg" alt="Huella de perro o gato plasmada en cerámica en Taller Inu" />
+      <div class="exp-img slider" data-interval="5500" role="group" aria-roledescription="carrusel" aria-label="Fotos: Huellas de animales">
+        <img class="slide is-active" src="images/exp-huellas-animales.jpg" alt="Huellas de animales: huella de mascota plasmada en cerámica en Taller Inu (foto 1)" />
+        <img class="slide" src="images/exp-huellas-animales-2.jpg" alt="Huellas de animales: el proceso en Taller Inu (foto 2)" loading="lazy" />
+        <img class="slide" src="images/exp-huellas-animales-3.jpg" alt="Huellas de animales: el resultado final en Taller Inu (foto 3)" loading="lazy" />
       </div>
       <div class="exp-body">
         <p class="sec-label">Recuerdo de mascota</p>
@@ -2018,6 +2062,115 @@ footer.main-footer {
     el.target = '_blank';
     el.rel = 'noopener noreferrer';
   });
+
+  // ── SLIDERS DE FOTOS ────────────────────────
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function initSlider(root) {
+    let slides = Array.from(root.querySelectorAll('.slide'));
+    const interval = parseInt(root.dataset.interval, 10) || 5500;
+    let current = 0, timer = null, userPaused = reduceMotion, hovering = false, visible = false;
+
+    // Controles
+    const prev = document.createElement('button');
+    prev.type = 'button'; prev.className = 'slider-btn slider-prev';
+    prev.setAttribute('aria-label', 'Foto anterior'); prev.textContent = '←';
+    const next = document.createElement('button');
+    next.type = 'button'; next.className = 'slider-btn slider-next';
+    next.setAttribute('aria-label', 'Foto siguiente'); next.textContent = '→';
+    const bar = document.createElement('div'); bar.className = 'slider-bar';
+    const pause = document.createElement('button');
+    pause.type = 'button'; pause.className = 'slider-pause';
+    root.append(prev, next, bar);
+
+    function build() {
+      bar.innerHTML = '';
+      slides.forEach(function (_, i) {
+        const d = document.createElement('button');
+        d.type = 'button'; d.className = 'slider-dot';
+        d.setAttribute('aria-label', 'Ir a la foto ' + (i + 1));
+        d.addEventListener('click', function () { go(i, true); });
+        bar.appendChild(d);
+      });
+      bar.appendChild(pause);
+      root.classList.toggle('is-single', slides.length < 2);
+      go(Math.min(current, slides.length - 1), false);
+    }
+
+    function go(i, manual) {
+      if (!slides.length) return;
+      current = (i + slides.length) % slides.length;
+      slides.forEach(function (sl, n) {
+        sl.classList.toggle('is-active', n === current);
+        sl.setAttribute('aria-hidden', n === current ? 'false' : 'true');
+      });
+      bar.querySelectorAll('.slider-dot').forEach(function (d, n) {
+        d.setAttribute('aria-current', n === current ? 'true' : 'false');
+      });
+      if (manual) restart();
+    }
+
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function start() {
+      stop();
+      if (userPaused || hovering || !visible || slides.length < 2) return;
+      timer = setInterval(function () {
+        // no avanzar si la página no está activa o la pestaña está oculta
+        if (document.hidden || !root.closest('.page.active')) return;
+        go(current + 1, false);
+      }, interval);
+    }
+    function restart() { start(); }
+
+    function syncPause() {
+      pause.textContent = userPaused ? '▶ Reproducir' : '❚❚ Pausar';
+      pause.setAttribute('aria-label', userPaused ? 'Reanudar el cambio automático de fotos' : 'Pausar el cambio automático de fotos');
+    }
+
+    prev.addEventListener('click', function () { go(current - 1, true); });
+    next.addEventListener('click', function () { go(current + 1, true); });
+    pause.addEventListener('click', function () { userPaused = !userPaused; syncPause(); start(); });
+
+    // Pausa al pasar el ratón / enfocar con teclado
+    root.addEventListener('mouseenter', function () { hovering = true; stop(); });
+    root.addEventListener('mouseleave', function () { hovering = false; start(); });
+    root.addEventListener('focusin', function () { hovering = true; stop(); });
+    root.addEventListener('focusout', function () { hovering = false; start(); });
+
+    // Teclado
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft')  { go(current - 1, true); }
+      if (e.key === 'ArrowRight') { go(current + 1, true); }
+    });
+
+    // Gesto de deslizar en móvil
+    let x0 = null;
+    root.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    root.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) > 40) go(current + (dx < 0 ? 1 : -1), true);
+    });
+
+    // Solo se reproduce cuando es visible en pantalla
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting; start();
+      }, { threshold: 0.25 }).observe(root);
+    } else { visible = true; }
+
+    // Si una foto no existe, se quita del carrusel
+    slides.forEach(function (sl) {
+      sl.addEventListener('error', function () {
+        slides = slides.filter(function (x) { return x !== sl; });
+        sl.remove(); build(); start();
+      });
+    });
+
+    syncPause(); build(); start();
+  }
+  document.querySelectorAll('.slider').forEach(initSlider);
 
   // ── RECUERDOS: salto a cada experiencia ─────
   document.querySelectorAll('[data-jump]').forEach(function (btn) {
